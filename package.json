@@ -14,7 +14,11 @@
     "type": "git",
     "url": "git+https://github.com/pelevesque/remove-duplicates.git"
   },
-  "keywords": [],
+  "keywords": [
+    "remove",
+    "duplicates",
+    "array"
+  ],
   "author": "Pierre-Emmanuel Lévesque <pierre.e.levesque@gmail.com>",
   "license": "MIT",
   "bugs": {

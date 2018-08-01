@@ -1,6 +1,6 @@
 {
   "name": "@pelevesque/remove-duplicates",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Removes duplicates from an array.",
   "main": "index.js",
   "engines": {

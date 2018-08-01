@@ -20,7 +20,7 @@ Removes duplicates from an array.
 
 `npm test`
 
-### Standard Style & Unit Tests & Coverage
+### Unit Tests & Coverage
 
 `npm run cover`
 

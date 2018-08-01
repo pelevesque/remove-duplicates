@@ -36,6 +36,6 @@
     "standard": "^11.0.1"
   },
   "dependencies": {
-    "@pelevesque/find-duplicates": "^0.1.0"
+    "@pelevesque/find-duplicates": "^0.1.1"
   }
 }

@@ -1,16 +1,23 @@
 'use strict'
 
-const findDuplicates = require('@pelevesque/find-duplicates')
+const findIndexesOfDuplicates = require('@pelevesque/find-indexes-of-duplicates')
 
-module.exports = (arr, onlyKeepElementsWithoutDuplicates = false) => {
-  const duplicates = findDuplicates(arr)
+module.exports = (arr,
+  { onlyKeepElementsWithoutDuplicates = false, remove = true } = {}
+) => {
+  const indexesOfDuplicates = findIndexesOfDuplicates(arr)
   const removalStartIndex = onlyKeepElementsWithoutDuplicates ? 0 : 1
-  const indices = []
-  for (let i = 0, len = duplicates.length; i < len; i++) {
-    for (let j = removalStartIndex, len = duplicates[i].length; j < len; j++) {
-      indices.push(duplicates[i][j])
+  const indexesToRemove = []
+  for (let i = 0, len = indexesOfDuplicates.length; i < len; i++) {
+    for (let j = removalStartIndex, len = indexesOfDuplicates[i].length; j < len; j++) {
+      indexesToRemove.push(indexesOfDuplicates[i][j])
     }
   }
-  indices.sort((a, b) => b - a) // sort descending
-  indices.forEach(v => arr.splice(v, 1))
+  indexesToRemove.sort((a, b) => b - a) // sort descending
+  const duplicates = []
+  indexesToRemove.forEach(v => {
+    duplicates.unshift(arr[v])
+    if (remove) arr.splice(v, 1)
+  })
+  return duplicates
 }

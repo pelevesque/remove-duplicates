@@ -4,7 +4,7 @@
 
 # remove-duplicates
 
-Removes duplicates from an array.
+Removes and returns duplicates from an array.
 
 ## Node Repository
 

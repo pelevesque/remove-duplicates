@@ -8,7 +8,7 @@ Removes and returns duplicates from an array.
 
 ## Node Repository
 
-[https://www.npmjs.com/package/@pelevesque/remove-duplicates](https://www.npmjs.com/package/@pelevesque/remove-duplicates)
+https://www.npmjs.com/package/@pelevesque/remove-duplicates
 
 ## Installation
 
@@ -26,16 +26,16 @@ Removes and returns duplicates from an array.
 
 ## Usage
 
-#### Requiring the Module
+#### Requiring
 
 ```js
 const removeDuplicates = require('@pelevesque/remove-duplicates')
 ```
 
-#### Removing Duplicates
+#### Basic
 
 ```js
-const elements = [
+const arr = [
   'd131dd02c5e6eec4', // a
   '55ad340609f4b302',
   'd8823e3156348f5b', // b
@@ -44,23 +44,29 @@ const elements = [
   '551111111114b302', // c
   '551111111114b302'  // c
 ]
-removeDuplicates(elements)
-// elements now looks like the array below
-element = [
+const duplicates = removeDuplicates(arr)
+/*
+arr = [
   'd131dd02c5e6eec4',
   '55ad340609f4b302',
   'd8823e3156348f5b',
   '551111111114b302'
 ]
+duplicates = [
+  'd131dd02c5e6eec4',
+  'd8823e3156348f5b',
+  '551111111114b302'
+]
+*/
 ```
 
-#### Removing Duplicates With the onlyKeepElementsWithoutDuplicates Flag
+#### OnlyKeepElementsWithoutDuplicates Option
 
-When setting the onlyKeepElementsWithoutDuplicates to true, only elements that
+When setting the `onlyKeepElementsWithoutDuplicates` to true, only elements that
 have no duplicates are kept.
 
 ```js
-const elements = [
+const arr = [
   'd131dd02c5e6eec4', // a
   '55ad340609f4b302',
   'd8823e3156348f5b', // b
@@ -69,10 +75,54 @@ const elements = [
   '551111111114b302', // c
   '551111111114b302'  // c
 ]
-const onlyKeepElementsWithoutDuplicates = true
-removeDuplicates(elements, onlyKeepElementsWithoutDuplicates)
-// elements now looks like the array below
-element = [
+const opts = { onlyKeepElementsWithoutDuplicates: true }
+const duplicates = removeDuplicates(arr, opts)
+/*
+arr = [
   '55ad340609f4b302'
 ]
+duplicates = [
+  'd131dd02c5e6eec4',
+  'd8823e3156348f5b',
+  'd131dd02c5e6eec4',
+  'd8823e3156348f5b',
+  '551111111114b302',
+  '551111111114b302'
+]
+*/
+```
+
+#### Remove option
+
+With the remove option set to false, duplicates are still returned, but nothing is
+removed from the original array.
+
+```js
+const arr = [
+  'd131dd02c5e6eec4', // a
+  '55ad340609f4b302',
+  'd8823e3156348f5b', // b
+  'd131dd02c5e6eec4', // a
+  'd8823e3156348f5b', // b
+  '551111111114b302', // c
+  '551111111114b302'  // c
+]
+const opts = { remove: false }
+const duplicates = removeDuplicates(arr, opts)
+/*
+arr = [
+  'd131dd02c5e6eec4',
+  '55ad340609f4b302',
+  'd8823e3156348f5b',
+  'd131dd02c5e6eec4',
+  'd8823e3156348f5b',
+  '551111111114b302',
+  '551111111114b302'
+]
+duplicates = [
+  'd131dd02c5e6eec4',
+  'd8823e3156348f5b',
+  '551111111114b302'
+]
+*/
 ```
